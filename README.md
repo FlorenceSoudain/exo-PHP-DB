@@ -94,10 +94,11 @@ Insérer des données dans une base de donnée :
 Il est possible d'insérer des données dans une table, généralement on crée les tables manuellement puis on les utilise
 avec PHP.
 
-La syntaxe sql est la suivante : INSERT INTO table_name (column1, column2, column3,...)
+La syntaxe sql est la suivante : 
+INSERT INTO table_name (column1, column2, column3,...)
                                  VALUES (value1, value2, value3,...)
 
-Il est possible de ne pas préciser les noms de collones si on prévoit d'insérer des données sur l'ensemble des collones de
+Il est possible de ne pas préciser les noms de colonnes si on prévoit d'insérer des données sur l'ensemble des colonnes de
                                  la table.
 
 
