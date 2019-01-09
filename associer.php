@@ -26,7 +26,7 @@ else
 $mug = $_POST['mug'];
 $eleve = $_POST['eleve'];
 
-$sql = "INSERT INTO eleves_mugs VALUES ('', '$mug', '$eleve')";
+$sql = "INSERT INTO eleves_mugs VALUES ('', '$eleve', '$mug')";
 if ($conn -> query($sql) === TRUE){
     echo "Ajout réussi";
 }
