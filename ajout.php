@@ -22,23 +22,30 @@ else
     $conn -> select_db($dbname);
 }
 
-$prenom = $_POST['prenom'];
-$nom = $_POST['nom'];
-$age = $_POST['age'];
+//données filtrées
+$prenom = filter_var($_POST['prenom'], FILTER_SANITIZE_STRING);
+$nom = filter_var($_POST['nom'],FILTER_SANITIZE_STRING);
+$age = filter_var($_POST['age'], FILTER_SANITIZE_NUMBER_INT);
 
-$sql = "INSERT INTO eleves VALUES ('', '$prenom', '$nom', '$age')";
+/*$sql = "INSERT INTO eleves VALUES ('', '$prenom', '$nom', '$age')";
 if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
-}
+}*/
 
+ //requête préparée
+$stmt = $conn -> prepare("INSERT INTO eleves VALUES (?,?,?,?)");
+$stmt ->bind_param("isss", $id, $prenom, $nom, $age);
+$stmt -> execute();
+$stmt -> close();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ajouter un élève</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <a href="index.php">Retour à l'index</a>
